@@ -1,17 +1,6 @@
 import React, {useState} from 'react'
-
-const WordCharCount = ({text}) => {
-    let charsCount = text.length;
-    let wordsCount = 0;
-    const textArr = text.split(' ')
-
-    textArr.forEach(element => {
-        if(element !== "") wordsCount++;
-    })
-    return(
-        <p>{wordsCount} words and {charsCount} characters</p>
-    )
-}
+import WordCharCount from './WordCharCount'
+import TimeToRead from './TimeToRead'
 
 export default function TextForm({heading, mode}) {
     const [text, setText] = useState("")
@@ -50,8 +39,7 @@ export default function TextForm({heading, mode}) {
             <div className='container my-2' style={{color: mode === 'dark' ? 'white' : 'black'}}>
                 <h3 className="">Your Text Summary</h3>
                 <WordCharCount text={text}/>
-                <p>{0.007 * text.split(' ').length} Minutes to read</p>
-
+                <TimeToRead text={text} />
                 <h3>Preview</h3>
                 {text.length === 0 ? "Nothing to show preview" : text}
             </div>
