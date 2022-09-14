@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const WordCharCount = ({text})=>{
+const WordCharCount = ({text}) => {
     let charsCount = text.length;
     let wordsCount = 0;
     const textArr = text.split(' ')
@@ -25,6 +25,11 @@ export default function TextForm({heading}) {
         setText(newText)
     }
 
+    const changeLowerCase = ()=>{
+        const newText = text.toLowerCase()
+        setText(newText)
+    }
+
     return (
         <>
             <div className="container">
@@ -33,6 +38,7 @@ export default function TextForm({heading}) {
                 <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
                 </div>
                 <button className="btn btn-primary" onClick={changeUpperCase}>Convert Uppercase</button>
+                <button className="btn btn-primary mx-2" onClick={changeLowerCase}>Convert Lowercase</button>
             </div>
 
             <div className='container my-2'>
